@@ -1,0 +1,22 @@
+function [f_int] = get_INT(t,f)
+%INTEGRAL Return total Area under the curve and array of each delta t 
+
+%   Takes t input time and f input as f(t) 
+% outputs the area under the curve of f(t) 
+
+% f values times (t_end - t0 / length of t) stored in array
+
+% Left-hand sum 
+for i = 1:length(t)-1
+    left_hand(i) = (f(i) * t(end)/length(t)-1)       
+end
+
+% Right-hand sum 
+for i = 2:length(t)
+    right_hand(i-1) = (f(i) * t(end)/length(t))
+end
+
+% Averages the right and left hand sum 
+f_int(:,1) = (right_hand + left_hand)./2
+
+end
